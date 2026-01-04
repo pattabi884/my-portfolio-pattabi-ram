@@ -207,18 +207,64 @@ Webhook`}
         </section>
 
         {/* FOOTER */}
-        <footer className="pt-20 border-t border-slate-800 text-slate-400">
-          <p>
-            GitHub:{" "}
-            <a
-              href="https://github.com/pattabi884"
-              target="_blank"
-              className="text-indigo-400 hover:text-indigo-300"
-            >
-              github.com/pattabi884
-            </a>
-          </p>
-        </footer>
+        <footer className="pt-20 border-t border-slate-800">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-slate-400">
+
+    {/* Left */}
+    <div className="space-y-2">
+      <p className="text-slate-300 font-medium">Contact</p>
+
+      <p>
+        📍 Bangalore, Karnataka
+      </p>
+
+      <p>
+        📞{" "}
+        <a
+          href="tel:+918660640349"
+          className="text-indigo-400 hover:text-indigo-300"
+        >
+          +91 86606 40349
+        </a>
+      </p>
+
+      <p>
+        ✉️{" "}
+        <a
+          href="mailto:pattabirama2000@gmail.com"
+          className="text-indigo-400 hover:text-indigo-300"
+        >
+          pattabirama2000@gmail.com
+        </a>
+      </p>
+    </div>
+
+    {/* Right */}
+    <div className="space-y-2 md:text-right">
+      <p className="text-slate-300 font-medium">Links</p>
+
+      <p>
+        <a
+          href="https://github.com/pattabi884"
+          target="_blank"
+          className="text-indigo-400 hover:text-indigo-300"
+        >
+          GitHub
+        </a>
+      </p>
+
+      <p>
+        <a
+          href="https://www.linkedin.com/in/pattabi-ram-129431259"
+          target="_blank"
+          className="text-indigo-400 hover:text-indigo-300"
+        >
+          LinkedIn
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>
       </div>
     </main>
   );
