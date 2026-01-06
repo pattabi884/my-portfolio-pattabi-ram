@@ -1,270 +1,222 @@
+import Image from "next/image";
 import Reveal from "./components/Reveal";
 
-function Divider() {
+const MAIN_STACK = [
+  { name: "Node.js", src: "/tech/node.png" },
+  { name: "TypeScript", src: "/tech/typescript.png" },
+  { name: "Go", src: "/tech/go.png" },
+  { name: "Redis", src: "/tech/redis.png" },
+  { name: "Kafka", src: "/tech/kafka.png" },
+  { name: "PostgreSQL", src: "/tech/postgres.png" },
+  { name: "Python", src: "/tech/python.png" },
+  { name: "Docker", src: "/tech/docker.png" },
+];
+
+const SECONDARY_STACK = [
+  { name: "Prisma", src: "/tech/prisma.png" },
+  { name: "Keycloak", src: "/tech/keycloak.png" },
+  { name: "Kong", src: "/tech/kong.png" },
+  { name: "OpenCV", src: "/tech/opencv.png" },
+  { name: "Next.js", src: "/tech/next.png" },
+  { name: "MongoDB", src: "/tech/mongo.png" },
+];
+
+function TechIcon({
+  name,
+  src,
+  small = false,
+}: {
+  name: string;
+  src: string;
+  small?: boolean;
+}) {
   return (
-    <div className="relative my-28">
-      <div className="h-px bg-gradient-to-r from-transparent via-indigo-500/60 to-transparent" />
-      <div className="absolute inset-x-0 -top-2 h-4 bg-indigo-500/10 blur-xl" />
+    <div
+      className={`flex items-center gap-3 rounded-xl border border-neutral-800 bg-black ${
+        small ? "px-3 py-2" : "px-4 py-3"
+      }`}
+    >
+      <Image
+        src={src}
+        alt={name}
+        width={small ? 20 : 24}
+        height={small ? 20 : 24}
+      />
+      <span
+        className={`${
+          small
+            ? "text-xs text-neutral-400"
+            : "text-sm font-medium text-neutral-200"
+        }`}
+      >
+        {name}
+      </span>
     </div>
   );
 }
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen bg-slate-950 text-slate-100 overflow-hidden">
-      {/* Background flair */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-32 -left-32 h-[400px] w-[400px] rounded-full bg-indigo-500/20 blur-3xl" />
-        <div className="absolute top-1/3 -right-32 h-[450px] w-[450px] rounded-full bg-fuchsia-500/20 blur-3xl" />
-        <div className="absolute bottom-0 left-1/4 h-[300px] w-[300px] rounded-full bg-cyan-500/20 blur-3xl" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:40px_40px]" />
-      </div>
-
-      <div className="relative max-w-6xl mx-auto px-6 py-24 space-y-32">
+    <main className="min-h-screen bg-black text-neutral-100">
+      <div className="max-w-6xl mx-auto px-6 py-24 space-y-32">
 
         {/* HERO */}
         <Reveal>
           <section className="max-w-4xl space-y-6">
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-              Hi, Pattabi Rama here.
+            <h1 className="text-4xl md:text-6xl font-bold">
+              Hi, I’m Pattabi.
             </h1>
-
-            <p className="text-xl text-slate-300">
-              Ok ok — I know what you’re here for.
-            </p>
-
-            <p className="text-slate-300 leading-relaxed">
-              You want to know if the person behind this page is worth your time,
-              and whether they can actually build things that hold up in the real
-              world.
-            </p>
-
-            <p className="text-slate-300 leading-relaxed">
-              Hey — I know looking at resumes and portfolios probably isn’t really
-              what you wanted to do today, but I’ll make it easy for you. Buckle up.
+            <p className="text-lg md:text-xl text-neutral-300 leading-relaxed">
+              I’m a backend-focused fresher with experience in startups and
+              high-pressure environments, looking to build robust, complex,
+              scalable systems — and debug them until 2am when needed.
             </p>
           </section>
         </Reveal>
 
-        <Divider />
-
-        {/* STORY */}
+        {/* TECH STACK */}
         <Reveal>
-          <section className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div className="md:col-span-1">
-              <h2 className="text-2xl font-semibold sticky top-24">
-                The short version
-              </h2>
+          <section className="space-y-10">
+            <h2 className="text-2xl font-semibold">Preferred Tech Stack</h2>
+
+            <div className="flex flex-wrap gap-4">
+              {MAIN_STACK.map((t) => (
+                <TechIcon key={t.name} {...t} />
+              ))}
             </div>
 
-            <div className="md:col-span-2 space-y-6 text-slate-300 leading-relaxed">
-              <p>
-                I’m a Bangalore-based backend-focused fresher. Yeah, that’s a
-                mouthful — bad joke, my bad.
-              </p>
-
-              <p>
-                I graduated in 2024 with a Bachelor’s in Technology (Electrical
-                and Computers). My first internship ran from November 2024 to May
-                2025 working with OpenCV and Python.
-              </p>
-
-              <p>
-                Somewhere along the way, I realized I enjoy breaking and fixing
-                backend systems more than image processing libraries. That
-                realization led me to my current internship at a fintech company
-                (Paywize).
-              </p>
-
-              <p>
-                I’m proficient in Node.js and Go, can ramp up on Python quickly,
-                and I’m comfortable with Redis, Kafka, Postgres, Docker, and
-                modern backend tooling.
-              </p>
-
-              <p className="font-medium text-slate-200">
-                TL;DR — give me an interview and I’ll recommend the best food or
-                drinks spot in this city based on your preference.
-              </p>
+            <div className="flex flex-wrap gap-3">
+              {SECONDARY_STACK.map((t) => (
+                <TechIcon key={t.name} {...t} small />
+              ))}
             </div>
           </section>
         </Reveal>
-
-        <Divider />
 
         {/* PROJECTS */}
-        <section className="space-y-32">
+        <Reveal>
+          <section className="space-y-20">
+            <h2 className="text-2xl font-semibold">Selected Work</h2>
 
-          {/* FINTECH PROJECT */}
-          <Reveal>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-              {/* Visual */}
-              <div className="rounded-2xl bg-black/60 border border-slate-800 p-6 text-sm text-slate-300 font-mono">
-{`Merchant
-   |
-POST /deposit
-   |
-Express API
-   |
-Redis Queue
-   |
-Transaction Worker
-   |
-Shard Router
- |        |
-Shard 0  Shard 1
-   |
-Central Ledger
-   |
-Webhook`}
-              </div>
+            {/* FINTECH PROJECT */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <Image
+                src="/projects/wallet-architecture.png"
+                alt="Wallet Architecture Diagram"
+                width={900}
+                height={520}
+                className="rounded-xl border border-neutral-800 bg-white p-4"
+              />
 
-              {/* Content */}
-              <div className="space-y-6">
-                <h3 className="text-2xl font-semibold">
-                  🏦 Scalable Fintech Backend
+              <div className="space-y-5">
+                <h3 className="text-xl font-semibold">
+                  Scalable Fintech Backend — Wallet & Ledger System
                 </h3>
 
-                <p className="text-slate-300">
-                  A high-performance, sharded, event-driven fintech backend
-                  designed to handle scale without sacrificing financial
-                  correctness.
+                <p className="text-neutral-400 leading-relaxed">
+                  This project explores what it actually takes to build a
+                  production-grade wallet system — not just APIs, but correctness
+                  under retries, partial failures, and high write throughput.
                 </p>
 
-                <ul className="list-disc list-inside text-slate-400 space-y-2">
-                  <li>Database sharding across multiple PostgreSQL instances</li>
-                  <li>Redis-backed asynchronous processing (BullMQ)</li>
-                  <li>Distributed transactions across central & shard DBs</li>
-                  <li>Idempotency & deduplication to prevent double spending</li>
-                  <li>Dual-write reporting into a central ledger</li>
-                  <li>Secure HMAC-signed merchant webhooks</li>
-                </ul>
+                <p className="text-neutral-400 leading-relaxed">
+                  I designed a sharded wallet architecture to eliminate
+                  single-database bottlenecks, implemented deterministic routing
+                  to avoid cross-shard transactions, and moved transaction
+                  execution off the request path using Redis-backed queues.
+                </p>
+
+                <p className="text-neutral-400 leading-relaxed">
+                  The system uses idempotency keys to safely handle retries,
+                  dual-write patterns for reporting, and HMAC-signed webhooks so
+                  merchants can independently verify transaction events.
+                </p>
 
                 <a
                   href="https://github.com/pattabi884/Fintech-Backend-Scalable-Wallet-system-"
                   target="_blank"
-                  className="inline-block text-indigo-400 hover:text-indigo-300"
+                  className="text-indigo-400 hover:text-indigo-300"
                 >
-                  View on GitHub →
+                  Dive into the architecture & code →
                 </a>
               </div>
             </div>
-          </Reveal>
 
-          {/* GEO PROJECT */}
-          <Reveal>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-              {/* Visual */}
-              <div className="relative rounded-2xl border border-slate-800 bg-slate-900/70 p-8">
-                <div className="text-sm text-slate-400 mb-4">
-                  Nearby Drivers (Redis GEO + TTL)
-                </div>
+            {/* GEO PROJECT */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <Image
+                src="/projects/nearby-drivers.png"
+                alt="Realtime Nearby Drivers"
+                width={900}
+                height={520}
+                className="rounded-xl border border-neutral-800"
+              />
 
-                <div className="relative h-56 rounded-lg bg-black/60">
-                  <div className="absolute inset-0 flex items-center justify-center text-slate-500">
-                    Map View
-                  </div>
-
-                  {/* Drivers */}
-                  <div className="absolute top-10 left-16 h-3 w-3 rounded-full bg-green-400" />
-                  <div className="absolute top-20 left-32 h-3 w-3 rounded-full bg-green-400" />
-                  <div className="absolute top-32 left-24 h-3 w-3 rounded-full bg-green-400" />
-
-                  {/* User */}
-                  <div className="absolute top-24 left-24 h-4 w-4 rounded-full bg-indigo-400" />
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="space-y-6">
-                <h3 className="text-2xl font-semibold">
-                  🚖 Realtime Geospatial Engine
+              <div className="space-y-5">
+                <h3 className="text-xl font-semibold">
+                  Realtime Geospatial Engine (Uber-style Backend)
                 </h3>
 
-                <p className="text-slate-300">
-                  A high-throughput backend built to handle real-time geospatial
-                  data for mobility systems.
+                <p className="text-neutral-400 leading-relaxed">
+                  This system focuses on the “high-frequency writes” problem
+                  common in mobility platforms — where location updates arrive
+                  faster than databases can comfortably handle.
                 </p>
 
-                <ul className="list-disc list-inside text-slate-400 space-y-2">
-                  <li>Kafka partitioning ensures ordered driver updates</li>
-                  <li>Redis GEO + TTL prevents ghost drivers</li>
-                  <li>WebSocket push for live frontend updates</li>
-                  <li>Backpressure & stale frame dropping</li>
-                  <li>Batched writes to PostGIS reduce IOPS ~99%</li>
-                </ul>
+                <p className="text-neutral-400 leading-relaxed">
+                  I built a Kafka-based ingestion pipeline with key-based
+                  partitioning to guarantee ordered processing per driver, while
+                  Redis GEO indices with TTL-based liveness checks power fast
+                  nearby-driver queries.
+                </p>
+
+                <p className="text-neutral-400 leading-relaxed">
+                  Historical paths are persisted to PostGIS using batched writes,
+                  reducing IOPS while sustaining continuous real-time updates.
+                </p>
 
                 <a
                   href="https://github.com/pattabi884/Realtime-geospatial-engine"
                   target="_blank"
-                  className="inline-block text-indigo-400 hover:text-indigo-300"
+                  className="text-indigo-400 hover:text-indigo-300"
                 >
-                  View on GitHub →
+                  See how the system handles real-time load →
                 </a>
               </div>
             </div>
-          </Reveal>
-        </section>
+          </section>
+        </Reveal>
 
         {/* FOOTER */}
-        <footer className="pt-20 border-t border-slate-800">
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-slate-400">
+        <footer className="pt-20 border-t border-neutral-800 text-neutral-400 space-y-2">
+          <p>Bangalore, Karnataka</p>
+          <p>
+            <a
+              href="mailto:pattabirama2000@gmail.com"
+              className="text-indigo-400 hover:text-indigo-300"
+            >
+              pattabirama2000@gmail.com
+            </a>
+          </p>
+          <p>
+            <a
+              href="https://www.linkedin.com/in/pattabi-ram-129431259"
+              target="_blank"
+              className="text-indigo-400 hover:text-indigo-300"
+            >
+              LinkedIn
+            </a>{" "}
+            ·{" "}
+            <a
+              href="https://github.com/pattabi884"
+              target="_blank"
+              className="text-indigo-400 hover:text-indigo-300"
+            >
+              GitHub
+            </a>
+          </p>
+        </footer>
 
-    {/* Left */}
-    <div className="space-y-2">
-      <p className="text-slate-300 font-medium">Contact</p>
-
-      <p>
-        📍 Bangalore, Karnataka
-      </p>
-
-      <p>
-        📞{" "}
-        <a
-          href="tel:+918660640349"
-          className="text-indigo-400 hover:text-indigo-300"
-        >
-          +91 86606 40349
-        </a>
-      </p>
-
-      <p>
-        ✉️{" "}
-        <a
-          href="mailto:pattabirama2000@gmail.com"
-          className="text-indigo-400 hover:text-indigo-300"
-        >
-          pattabirama2000@gmail.com
-        </a>
-      </p>
-    </div>
-
-    {/* Right */}
-    <div className="space-y-2 md:text-right">
-      <p className="text-slate-300 font-medium">Links</p>
-
-      <p>
-        <a
-          href="https://github.com/pattabi884"
-          target="_blank"
-          className="text-indigo-400 hover:text-indigo-300"
-        >
-          GitHub
-        </a>
-      </p>
-
-      <p>
-        <a
-          href="https://www.linkedin.com/in/pattabi-ram-129431259"
-          target="_blank"
-          className="text-indigo-400 hover:text-indigo-300"
-        >
-          LinkedIn
-        </a>
-      </p>
-    </div>
-  </div>
-</footer>
       </div>
     </main>
   );
