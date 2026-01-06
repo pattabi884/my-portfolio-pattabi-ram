@@ -2,32 +2,34 @@ import Image from "next/image";
 import Reveal from "./components/Reveal";
 
 const MAIN_STACK = [
-  { name: "Node.js", src: "/tech/node.png" },
-  { name: "TypeScript", src: "/tech/typescript.png" },
-  { name: "Go", src: "/tech/go.png" },
-  { name: "Redis", src: "/tech/redis.png" },
-  { name: "Kafka", src: "/tech/kafka.png" },
-  { name: "PostgreSQL", src: "/tech/postgres.png" },
-  { name: "Python", src: "/tech/python.png" },
-  { name: "Docker", src: "/tech/docker.png" },
+  { name: "Node.js", icon: "node.js", color: "339933" },
+  { name: "TypeScript", icon: "typescript", color: "3178C6" },
+  { name: "Go", icon: "go", color: "00ADD8" },
+  { name: "Redis", icon: "redis", color: "DC382D" },
+  { name: "Kafka", icon: "apachekafka", color: "FFFFFF" },
+  { name: "PostgreSQL", icon: "postgresql", color: "4169E1" },
+  { name: "Python", icon: "python", color: "3776AB" },
+  { name: "Docker", icon: "docker", color: "2496ED" },
 ];
 
 const SECONDARY_STACK = [
-  { name: "Prisma", src: "/tech/prisma.png" },
-  { name: "Keycloak", src: "/tech/keycloak.png" },
-  { name: "Kong", src: "/tech/kong.png" },
-  { name: "OpenCV", src: "/tech/opencv.png" },
-  { name: "Next.js", src: "/tech/next.png" },
-  { name: "MongoDB", src: "/tech/mongo.png" },
+  { name: "Prisma", icon: "prisma", color: "2D3748" },
+  { name: "Keycloak", icon: "keycloak", color: "4D4D4D" },
+  { name: "Kong", icon: "kong", color: "003459" },
+  { name: "OpenCV", icon: "opencv", color: "5C3EE8" },
+  { name: "Next.js", icon: "next.js", color: "FFFFFF" },
+  { name: "MongoDB", icon: "mongodb", color: "47A248" },
 ];
 
 function TechIcon({
   name,
-  src,
+  icon,
+  color,
   small = false,
 }: {
   name: string;
-  src: string;
+  icon: string;
+  color: string;
   small?: boolean;
 }) {
   return (
@@ -36,11 +38,10 @@ function TechIcon({
         small ? "px-3 py-2" : "px-4 py-3"
       }`}
     >
-      <Image
-        src={src}
+      <img
+        src={`https://cdn.simpleicons.org/${icon}/${color}`}
         alt={name}
-        width={small ? 20 : 24}
-        height={small ? 20 : 24}
+        className={small ? "h-5 w-5" : "h-6 w-6"}
       />
       <span
         className={`${
@@ -93,79 +94,12 @@ export default function Home() {
           </section>
         </Reveal>
 
-        {/* WORK EXPERIENCE */}
-        <Reveal>
-          <section className="space-y-14">
-            <h2 className="text-2xl font-semibold">Experience</h2>
-
-            {/* Paywize */}
-            <div className="space-y-4">
-              <h3 className="text-xl font-semibold">
-                Backend Engineering Intern — Paywize (Fintech Startup)
-              </h3>
-
-              <p className="text-neutral-400 leading-relaxed">
-                Worked in a fintech environment where backend systems had to
-                behave predictably under retries, partial outages, and
-                consistency constraints.
-              </p>
-
-              <ul className="list-disc list-inside space-y-2 text-neutral-400">
-                <li>
-                  Built and maintained backend microservices using Node.js
-                  (TypeScript) and Go to support transaction workflows and
-                  internal APIs.
-                </li>
-                <li>
-                  Designed Redis-backed asynchronous processing for retries,
-                  delayed execution, and background jobs, keeping request paths
-                  fast and failure-isolated.
-                </li>
-                <li>
-                  Refactored database queries to remove performance bottlenecks
-                  and selectively used Kafka to offload asynchronous processing
-                  when synchronous execution was not viable.
-                </li>
-              </ul>
-            </div>
-
-            {/* Python / OpenCV */}
-            <div className="space-y-4">
-              <h3 className="text-xl font-semibold">
-                Python Developer Intern
-              </h3>
-
-              <p className="text-neutral-400 leading-relaxed">
-                Started out working close to computer-vision pipelines, then
-                gradually moved toward backend systems supporting those
-                workflows.
-              </p>
-
-              <ul className="list-disc list-inside space-y-2 text-neutral-400">
-                <li>
-                  Worked on algorithm design and optimization for real-time
-                  OpenCV-based image processing in sports drill analysis.
-                </li>
-                <li>
-                  Built backend APIs to support data ingestion, preprocessing,
-                  and orchestration of computer-vision workflows.
-                </li>
-                <li>
-                  Identified and optimized bottlenecks across image-processing
-                  pipelines and related database queries to improve overall
-                  throughput.
-                </li>
-              </ul>
-            </div>
-          </section>
-        </Reveal>
-
         {/* PROJECTS */}
         <Reveal>
           <section className="space-y-20">
             <h2 className="text-2xl font-semibold">Selected Work</h2>
 
-            {/* FINTECH PROJECT */}
+            {/* FINTECH */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <Image
                 src="/projects/wallet-architecture.png"
@@ -181,22 +115,20 @@ export default function Home() {
                 </h3>
 
                 <p className="text-neutral-400 leading-relaxed">
-                  This project explores what it actually takes to build a
-                  production-grade wallet system — not just APIs, but correctness
-                  under retries, partial failures, and high write throughput.
+                  A deep dive into building a production-grade wallet system
+                  where correctness matters more than happy-path demos.
                 </p>
 
                 <p className="text-neutral-400 leading-relaxed">
-                  I designed a sharded wallet architecture to remove
-                  single-database bottlenecks, implemented deterministic routing
-                  to avoid cross-shard transactions, and moved transaction
-                  execution off the request path using Redis-backed queues.
+                  The system uses sharded databases with deterministic routing to
+                  avoid cross-shard transactions, Redis-backed queues to move
+                  execution off the request path, and idempotency to survive
+                  retries and partial failures.
                 </p>
 
                 <p className="text-neutral-400 leading-relaxed">
-                  The system uses idempotency keys to safely handle retries and
-                  HMAC-signed webhooks so merchants can independently verify
-                  transaction authenticity.
+                  Secure, HMAC-signed webhooks allow merchants to independently
+                  verify transaction events without trusting the transport.
                 </p>
 
                 <a
@@ -204,12 +136,12 @@ export default function Home() {
                   target="_blank"
                   className="text-indigo-400 hover:text-indigo-300"
                 >
-                  Dive into the architecture & code →
+                  Read the architecture & code →
                 </a>
               </div>
             </div>
 
-            {/* GEO PROJECT */}
+            {/* GEO */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <Image
                 src="/projects/nearby-drivers.png"
@@ -225,21 +157,14 @@ export default function Home() {
                 </h3>
 
                 <p className="text-neutral-400 leading-relaxed">
-                  This system focuses on the high-frequency write problem common
-                  in mobility platforms, where location updates arrive faster
-                  than databases can comfortably handle.
+                  Designed to handle high-frequency GPS updates without melting
+                  databases or sacrificing freshness.
                 </p>
 
                 <p className="text-neutral-400 leading-relaxed">
-                  I built a Kafka-based ingestion pipeline with key-based
-                  partitioning to guarantee ordered processing per driver, while
-                  Redis GEO indices with TTL-based liveness checks power fast
-                  proximity queries.
-                </p>
-
-                <p className="text-neutral-400 leading-relaxed">
-                  Historical paths are persisted to PostGIS using batched writes,
-                  reducing IOPS while sustaining continuous real-time updates.
+                  Kafka guarantees ordered processing per driver, Redis GEO
+                  indices power fast proximity queries with TTL-based liveness,
+                  and PostGIS stores historical paths using batched writes.
                 </p>
 
                 <a
@@ -247,7 +172,7 @@ export default function Home() {
                   target="_blank"
                   className="text-indigo-400 hover:text-indigo-300"
                 >
-                  See how the system handles real-time load →
+                  Explore the system design →
                 </a>
               </div>
             </div>
@@ -288,4 +213,5 @@ export default function Home() {
     </main>
   );
 }
+
 
