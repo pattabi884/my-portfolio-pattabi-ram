@@ -93,6 +93,73 @@ export default function Home() {
           </section>
         </Reveal>
 
+        {/* WORK EXPERIENCE */}
+        <Reveal>
+          <section className="space-y-14">
+            <h2 className="text-2xl font-semibold">Experience</h2>
+
+            {/* Paywize */}
+            <div className="space-y-4">
+              <h3 className="text-xl font-semibold">
+                Backend Engineering Intern — Paywize (Fintech Startup)
+              </h3>
+
+              <p className="text-neutral-400 leading-relaxed">
+                Worked in a fintech environment where backend systems had to
+                behave predictably under retries, partial outages, and
+                consistency constraints.
+              </p>
+
+              <ul className="list-disc list-inside space-y-2 text-neutral-400">
+                <li>
+                  Built and maintained backend microservices using Node.js
+                  (TypeScript) and Go to support transaction workflows and
+                  internal APIs.
+                </li>
+                <li>
+                  Designed Redis-backed asynchronous processing for retries,
+                  delayed execution, and background jobs, keeping request paths
+                  fast and failure-isolated.
+                </li>
+                <li>
+                  Refactored database queries to remove performance bottlenecks
+                  and selectively used Kafka to offload asynchronous processing
+                  when synchronous execution was not viable.
+                </li>
+              </ul>
+            </div>
+
+            {/* Python / OpenCV */}
+            <div className="space-y-4">
+              <h3 className="text-xl font-semibold">
+                Python Developer Intern
+              </h3>
+
+              <p className="text-neutral-400 leading-relaxed">
+                Started out working close to computer-vision pipelines, then
+                gradually moved toward backend systems supporting those
+                workflows.
+              </p>
+
+              <ul className="list-disc list-inside space-y-2 text-neutral-400">
+                <li>
+                  Worked on algorithm design and optimization for real-time
+                  OpenCV-based image processing in sports drill analysis.
+                </li>
+                <li>
+                  Built backend APIs to support data ingestion, preprocessing,
+                  and orchestration of computer-vision workflows.
+                </li>
+                <li>
+                  Identified and optimized bottlenecks across image-processing
+                  pipelines and related database queries to improve overall
+                  throughput.
+                </li>
+              </ul>
+            </div>
+          </section>
+        </Reveal>
+
         {/* PROJECTS */}
         <Reveal>
           <section className="space-y-20">
@@ -120,16 +187,16 @@ export default function Home() {
                 </p>
 
                 <p className="text-neutral-400 leading-relaxed">
-                  I designed a sharded wallet architecture to eliminate
+                  I designed a sharded wallet architecture to remove
                   single-database bottlenecks, implemented deterministic routing
                   to avoid cross-shard transactions, and moved transaction
                   execution off the request path using Redis-backed queues.
                 </p>
 
                 <p className="text-neutral-400 leading-relaxed">
-                  The system uses idempotency keys to safely handle retries,
-                  dual-write patterns for reporting, and HMAC-signed webhooks so
-                  merchants can independently verify transaction events.
+                  The system uses idempotency keys to safely handle retries and
+                  HMAC-signed webhooks so merchants can independently verify
+                  transaction authenticity.
                 </p>
 
                 <a
@@ -158,16 +225,16 @@ export default function Home() {
                 </h3>
 
                 <p className="text-neutral-400 leading-relaxed">
-                  This system focuses on the “high-frequency writes” problem
-                  common in mobility platforms — where location updates arrive
-                  faster than databases can comfortably handle.
+                  This system focuses on the high-frequency write problem common
+                  in mobility platforms, where location updates arrive faster
+                  than databases can comfortably handle.
                 </p>
 
                 <p className="text-neutral-400 leading-relaxed">
                   I built a Kafka-based ingestion pipeline with key-based
                   partitioning to guarantee ordered processing per driver, while
                   Redis GEO indices with TTL-based liveness checks power fast
-                  nearby-driver queries.
+                  proximity queries.
                 </p>
 
                 <p className="text-neutral-400 leading-relaxed">
@@ -221,3 +288,4 @@ export default function Home() {
     </main>
   );
 }
+
