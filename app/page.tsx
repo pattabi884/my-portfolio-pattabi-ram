@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Reveal from "./components/Reveal";
 
+/* ------------------ TECH STACK (CDN) ------------------ */
+
 const MAIN_STACK = [
   { name: "Node.js", icon: "node.js", color: "339933" },
   { name: "TypeScript", icon: "typescript", color: "3178C6" },
@@ -56,6 +58,8 @@ function TechIcon({
   );
 }
 
+/* ------------------ PAGE ------------------ */
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-black text-neutral-100">
@@ -90,6 +94,73 @@ export default function Home() {
               {SECONDARY_STACK.map((t) => (
                 <TechIcon key={t.name} {...t} small />
               ))}
+            </div>
+          </section>
+        </Reveal>
+
+        {/* EXPERIENCE */}
+        <Reveal>
+          <section className="space-y-16">
+            <h2 className="text-2xl font-semibold">Experience</h2>
+
+            {/* Paywize */}
+            <div className="max-w-4xl space-y-4">
+              <h3 className="text-xl font-semibold">
+                Backend Engineering Intern — Paywize (Fintech Startup)
+              </h3>
+
+              <p className="text-neutral-400 leading-relaxed">
+                Worked in a fintech environment where backend systems had to
+                behave predictably under retries, partial outages, and strict
+                consistency constraints.
+              </p>
+
+              <ul className="list-disc list-inside text-neutral-400 space-y-2">
+                <li>
+                  Built and maintained backend microservices using Node.js
+                  (TypeScript) and Go to support transaction workflows and
+                  internal APIs.
+                </li>
+                <li>
+                  Designed Redis-backed asynchronous processing for retries,
+                  delayed execution, and background jobs, keeping request paths
+                  fast and failure-isolated.
+                </li>
+                <li>
+                  Refactored database queries to remove performance bottlenecks
+                  and selectively used Kafka to offload asynchronous processing
+                  when synchronous execution was not viable.
+                </li>
+              </ul>
+            </div>
+
+            {/* Python */}
+            <div className="max-w-4xl space-y-4">
+              <h3 className="text-xl font-semibold">
+                Python Developer Intern
+              </h3>
+
+              <p className="text-neutral-400 leading-relaxed">
+                Started out working close to computer-vision pipelines, then
+                gradually moved toward backend systems supporting those
+                workflows.
+              </p>
+
+              <ul className="list-disc list-inside text-neutral-400 space-y-2">
+                <li>
+                  Worked on algorithm design and optimization for real-time
+                  OpenCV-based image processing in sports drill analysis.
+                </li>
+                <li>
+                  Built backend APIs to support data ingestion, preprocessing,
+                  and orchestration of computer-vision workflows.
+                </li>
+                <li>
+                  Identified and optimized bottlenecks across image-processing
+                  pipelines and related database queries to improve overall
+                  throughput.
+                </li>
+              </ul>
             </div>
           </section>
         </Reveal>
@@ -213,5 +284,3 @@ export default function Home() {
     </main>
   );
 }
-
-
